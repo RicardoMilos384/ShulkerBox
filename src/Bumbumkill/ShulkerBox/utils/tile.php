@@ -4,6 +4,14 @@ namespace Bumbumkill\ShulkerBox\utils;
 
 use pocketmine\tile\Tile;
 
-abstract class ile
+abstract class tile extends Tile{
 
-extends Tile{
+
+   public const
+	SHULKER_BOX = "ShulkerBox";
+
+   public static function init(){
+     self::registerTile(MobSpawner::class);
+   }
+}
+
