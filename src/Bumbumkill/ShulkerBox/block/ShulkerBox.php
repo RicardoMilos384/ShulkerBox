@@ -7,6 +7,7 @@ use pocketmine\block\{Block, BlockToolType, Transparent};
 use pocketmine\item\Item;
 use pocketmine\item\ItemFactory;
 use pocketmine\Player;
+use pocketmine\math\Vector3;
 use Bumbumkill\ShulkerBox\Main;
 use pocketmine\tile\Container;
 
@@ -68,9 +69,6 @@ class ShulkerBox extends Transparent {
 				$t = $this->getLevel()->getTile($this);
 				if(!($t instanceof ShulkeTile)){
 					$t = Tile::createTile(Tile::SHULKER_BOX, $this->getLevel(), ShulkeTile::createNBT($this));
-				}
-                                  if(!$this->getSide(Vector3::SIDE_UP)->isTransparent()){
-					return true;
 				}
 				$player->addWindow($t->getInventory());
 			}
