@@ -5,4 +5,5 @@ branches:
 projects:
   ShulkerBox:
     path: ""
+    icon: "icon.png"
 ...
