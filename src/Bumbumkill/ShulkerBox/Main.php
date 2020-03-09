@@ -16,12 +16,14 @@ class Main extends PluginBase implements Listener {
 
 public static $shulkerEnable = true;
 
-public function onEnable(){
+public function onLoad(){
 	Tile::registerTile(ShulkerTile::class);
 	BlockFactory::registerBlock(new ShulkerBox(Block::UNDYED_SHULKER_BOX), true);
 	BlockFactory::registerBlock(new ShulkerBox(), true);
 	Item::initCreativeItems();
-	@mkdir($this->getDataFolder());
+   }
+public function onEnable(){
+        @mkdir($this->getDataFolder());
         $this->saveResource("config.yml");
         $config = new Config($this->getDataFolder() . 'config.yml', Config::YAML);
         $shulkerEnable = $config->getNested("Function.enable");
