@@ -69,6 +69,9 @@ class ShulkerBox extends Transparent {
 				if(!($t instanceof ShulkeTile)){
 					$t = Tile::createTile(Tile::SHULKER_BOX, $this->getLevel(), ShulkeTile::createNBT($this));
 				}
+                                  if(!$this->getSide(Vector3::SIDE_UP)->isTransparent()){
+					return true;
+				}
 				$player->addWindow($t->getInventory());
 			}
 		}
