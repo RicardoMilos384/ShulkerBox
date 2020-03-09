@@ -2,7 +2,7 @@
 
 namespace Bumbumkill\ShulkerBox\Inventory;
 
-use Bumbumkill\ShulkerBox\utils\tile;
+use Bumbumkill\ShulkerBox\tile\ShulkerBox;
 use pocketmine\inventory\ContainerInventory;
 use pocketmine\level\Level;
 use pocketmine\math\Vector3;
@@ -11,7 +11,7 @@ use pocketmine\network\mcpe\protocol\LevelSoundEventPacket;
 use pocketmine\network\mcpe\protocol\types\WindowTypes;
 use pocketmine\Player;
 
-class shulkerboxinv extends ContainerInventory {
+class shulkerinv extends ContainerInventory {
 
 protected $holder;
 
