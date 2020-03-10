@@ -1,4 +1,6 @@
-# ShulkerBox
+<a href="https://poggit.pmmp.io/p/ShulkerBox"><img src="https://poggit.pmmp.io/shield.state/ShulkerBox"></a><a href="https://poggit.pmmp.io/p/ShulkerBox"><img src="https://poggit.pmmp.io/shield.dl.total/ShulkerBox"></a> 
+
+<h2> ShulkerBox </h2>
 
 <a align="center"><img src="https://github.com/Bumbumkill/ShulkerBox/blob/master/bruh.jpg"></img></a>
 
