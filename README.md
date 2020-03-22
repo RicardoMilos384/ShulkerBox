@@ -1,6 +1,6 @@
 <h2> ShulkerBox </h2>
 
-<img src="https://github.com/Bumbumkill/ShulkerBox/blob/master/bruh.jpg" height="64" width="128" align="center"></img>
+<img src="https://github.com/Bumbumkill/ShulkerBox/blob/master/bruh.jpg" height="128" width="256" align="center"></img>
 
 
 <a href="https://poggit.pmmp.io/p/ShulkerBox"><img src="https://poggit.pmmp.io/shield.state/ShulkerBox"></a>  <a href="https://poggit.pmmp.io/p/ShulkerBox"><img src="https://poggit.pmmp.io/shield.dl.total/ShulkerBox"></a> 
