@@ -13,8 +13,13 @@ use pocketmine\utils\Config;
 use Bumbumkill\ShulkerBox\block\ShulkerBox;
 
 class Main extends PluginBase implements Listener {
-
-public static $shulkerEnable = true;
+	
+	public static $shulkerEnable = true;
+	public static $config;
+	
+	public static function getInstance(): Main{
+		return self::$instance;
+	}
 
 public function onLoad(){
 	Tile::registerTile(ShulkerTile::class);
@@ -23,10 +28,12 @@ public function onLoad(){
 	Item::initCreativeItems();
    }
 public function onEnable(){
-        @mkdir($this->getDataFolder());
-        $this->saveResource("config.yml");
-        $config = new Config($this->getDataFolder() . 'config.yml', Config::YAML);
-        $shulkerEnable = $config->get("Enable");
 	$this->getServer()->getPluginManager()->registerEvents($this, $this);
+	if(!file_exists($this->getDataFolder())){
+			@mkdir($this->getDataFolder());
+		}
+		$this->saveDefaultConfig();
+		self::$config = new Config($this->getDataFolder() . "config.yml", Config::YAML);
+		self::$shulkerEnable = self::$config->getNested("Enable", self::$shulkerEnable);
   }
 }
