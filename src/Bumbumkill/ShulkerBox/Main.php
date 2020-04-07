@@ -26,7 +26,7 @@ public function onEnable(){
         @mkdir($this->getDataFolder());
         $this->saveResource("config.yml");
         $config = new Config($this->getDataFolder() . 'config.yml', Config::YAML);
-        $shulkerEnable = $config->getNested("Function.enable");
+        $shulkerEnable = $config->get("Enable");
 	$this->getServer()->getPluginManager()->registerEvents($this, $this);
   }
 }
