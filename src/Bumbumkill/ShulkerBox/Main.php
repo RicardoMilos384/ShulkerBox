@@ -17,10 +17,6 @@ class Main extends PluginBase implements Listener {
 	public static $shulkerEnable = true;
 	public static $config;
 	
-	public static function getInstance(): Main{
-		return self::$instance;
-	}
-
 public function onLoad(){
 	Tile::registerTile(ShulkerTile::class);
 	BlockFactory::registerBlock(new ShulkerBox(Block::UNDYED_SHULKER_BOX), true);
