@@ -2,7 +2,7 @@
 
 namespace Bumbumkill\ShulkerBox\tile;
 
-use Bumbumkill\ShulkerBox\Inventory\shulkerinv;
+use Bumbumkill\ShulkerBox\Inventory\shulkerinv as ShulkerInventory;
 use pocketmine\inventory\InventoryHolder;
 use pocketmine\nbt\tag\CompoundTag;
 use pocketmine\tile\Container;
@@ -32,13 +32,13 @@ class ShulkerBox extends Spawnable implements InventoryHolder, Container, Nameab
 		return $this->inventory;
 	}
 
-	public function getInventory() : shulkerinv{
+	public function getInventory() : ShulkerInventory {
 		return $this->inventory;
 	}
 
 	protected function readSaveData(CompoundTag $nbt): void{
 		$this->loadName($nbt);
-		$this->inventory = new shulkerinv($this);
+		$this->inventory = new ShulkerInventory($this);
 		$this->loadItems($nbt);
 	}
 
