@@ -11,7 +11,7 @@ use pocketmine\network\mcpe\protocol\LevelSoundEventPacket;
 use pocketmine\network\mcpe\protocol\types\WindowTypes;
 use pocketmine\Player;
 
-class shulkerinv extends ContainerInventory {
+class ShulkerInventory extends ContainerInventory {
 
 protected $holder;
 
