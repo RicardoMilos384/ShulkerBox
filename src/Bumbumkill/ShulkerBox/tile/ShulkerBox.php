@@ -32,7 +32,7 @@ class ShulkerBox extends Spawnable implements InventoryHolder, Container, Nameab
 		return $this->inventory;
 	}
 
-	public function getInventory(){
+	public function getInventory() : shulkerinv{
 		return $this->inventory;
 	}
 
