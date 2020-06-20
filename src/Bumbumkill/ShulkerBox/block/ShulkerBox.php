@@ -2,7 +2,7 @@
 
 namespace Bumbumkill\ShulkerBox\block;
 
-use Bumbumkill\ShulkerBox\tile\{ShulkerBox as ShulkeTile, tile as Tile};
+use Bumbumkill\ShulkerBox\tile\{ShulkerBox as ShulkerTile, tile as Tile};
 use pocketmine\block\{Block, BlockToolType, Transparent};
 use pocketmine\item\Item;
 use pocketmine\item\ItemFactory;
@@ -36,27 +36,26 @@ class ShulkerBox extends Transparent {
 
 	public function place(Item $item, Block $blockReplace, Block $blockClicked, int $face, Vector3 $clickVector, Player $player = null): bool{
 		$this->getLevel()->setBlock($blockReplace, $this, true, true);
-		$nbt = ShulkeTile::createNBT($this, $face, $item, $player);
+		$nbt = ShulkerTile::createNBT($this, $face, $item, $player);
 		$items = $item->getNamedTag()->getTag(Container::TAG_ITEMS);
 		if($items !== null){
-			$nbt->setTag($items);
+                  $nbt->setTag($items);
 		}
-		Tile::createTile(Tile::SHULKER_BOX, $this->getLevel(), $nbt);
-
-		($inv = $player->getInventory())->clear($inv->getHeldItemIndex());
-		return true;
+		 Tile::createTile(Tile::SHULKER_BOX, $this->getLevel(), $nbt);
+		 ($inv = $player->getInventory())->clear($inv->getHeldItemIndex());
+		 return true;
 	}
 
 	public function onBreak(Item $item, Player $player = null): bool{
-		$t = $this->getLevel()->getTile($this);
-		if($t instanceof ShulkeTile){
-			$item = ItemFactory::get($this->id, $this->id != self::UNDYED_SHULKER_BOX ? $this->meta : 0, 1);
-			$itemNBT = clone $item->getNamedTag();
-			$itemNBT->setTag($t->getCleanedNBT()->getTag(Container::TAG_ITEMS));
-			$item->setNamedTag($itemNBT);
-			$this->getLevel()->dropItem($this->add(0.5,0.5,0.5), $item);
-
-			$t->getInventory()->clearAll(); // dont drop the items
+                 /** @var ShulkerTile $tile */
+		$tile = $this->getLevel()->getTile($this);
+		if($tile instanceof ShulkerTile){
+	          $item = ItemFactory::get($this->id, $this->id != self::UNDYED_SHULKER_BOX ? $this->meta : 0, 1);
+		  $itemNBT = clone $item->getNamedTag();
+		  $itemNBT->setTag($tile->getCleanedNBT()->getTag(Container::TAG_ITEMS));
+		  $item->setNamedTag($itemNBT);
+		  $this->getLevel()->dropItem($this->add(0.5,0.5,0.5), $item);
+		  $tile->getInventory()->clearAll();
 		}
 		$this->getLevel()->setBlock($this, Block::get(Block::AIR), true, true);
 
@@ -66,11 +65,11 @@ class ShulkerBox extends Transparent {
 	public function onActivate(Item $item, Player $player = null): bool{
 		if(Main::$shulkerEnable){
 			if($player instanceof Player){
-				$t = $this->getLevel()->getTile($this);
-				if(!($t instanceof ShulkeTile)){
-					$t = Tile::createTile(Tile::SHULKER_BOX, $this->getLevel(), ShulkeTile::createNBT($this));
+				$tile = $this->getLevel()->getTile($this);
+				if(!($tile instanceof ShulkerTile)){
+				  $tile = Tile::createTile(Tile::SHULKER_BOX, $this->getLevel(), ShulkerTile::createNBT($this));
 				}
-				$player->addWindow($t->getInventory());
+				  $player->addWindow($tile->getInventory());
 			}
 		}
 
