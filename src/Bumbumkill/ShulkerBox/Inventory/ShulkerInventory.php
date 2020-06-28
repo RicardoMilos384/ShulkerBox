@@ -43,6 +43,9 @@ protected $holder;
 		return $this->holder;
 	}
 
+        /**
+	 * @return Position
+	 */
 	protected function broadcastBlockEventPacket(Vector3 $vector, bool $isOpen){
 		$pk = new BlockEventPacket();
 		$pk->x = (int)$vector->x;
@@ -53,6 +56,9 @@ protected $holder;
 		$this->getHolder()->getLevel()->addChunkPacket($this->getHolder()->getX() >> 4, $this->getHolder()->getZ() >> 4, $pk);
 	}
 
+         /**
+	 * @param Player $who
+	 */
 	public function onClose(Player $who): void{
 		if(count($this->getViewers()) === 1 && ($level = $this->getHolder()->getLevel()) instanceof Level){
 			$this->broadcastBlockEventPacket($this->getHolder(), false);

@@ -18,34 +18,57 @@ class ShulkerBox extends Transparent {
 		$this->meta = $meta;
 	}
 
+         /**
+	 * @return float
+	 */
 	public function getResistance(): float{
 		return 30;
 	}
 
+         /**
+	 * @return float
+	 */
 	public function getHardness(): float{
 		return 2;
 	}
 
+         /**
+	 * @return int
+	 */
 	public function getToolType(): int{
 		return BlockToolType::TYPE_PICKAXE;
 	}
 
+         /**
+	 * @return string
+	 */
 	public function getName(): string{
 		return "Shulker Box";
 	}
 
+         /**
+         * @param Item $item
+         * @param Player|null $player
+	 * @return bool
+	 */
 	public function place(Item $item, Block $blockReplace, Block $blockClicked, int $face, Vector3 $clickVector, Player $player = null): bool{
-		$this->getLevel()->setBlock($blockReplace, $this, true, true);
-		$nbt = ShulkerTile::createNBT($this, $face, $item, $player);
+		/** @var ShulkerTile $tile */
+                $this->getLevel()->setBlock($blockReplace, $this, true, true);
+		$shulker = ShulkerTile::createNBT($this, $face, $item, $player);
 		$items = $item->getNamedTag()->getTag(Container::TAG_ITEMS);
 		if($items !== null){
-                  $nbt->setTag($items);
+                  $shulker->setTag($items);
 		}
-		 Tile::createTile(Tile::SHULKER_BOX, $this->getLevel(), $nbt);
+		 Tile::createTile(Tile::SHULKER_BOX, $this->getLevel(), $shulker);
 		 ($inv = $player->getInventory())->clear($inv->getHeldItemIndex());
 		 return true;
 	}
 
+         /**
+         * @param Item $item
+         * @param Player|null $player
+	 * @return bool
+	 */
 	public function onBreak(Item $item, Player $player = null): bool{
                  /** @var ShulkerTile $tile */
 		$tile = $this->getLevel()->getTile($this);
@@ -62,6 +85,11 @@ class ShulkerBox extends Transparent {
 		return true;
 	}
 
+         /**
+         * @param Item $item
+         * @param Player|null $player
+	 * @return bool
+	 */
 	public function onActivate(Item $item, Player $player = null): bool{
 		if(Main::$shulkerEnable){
 			if($player instanceof Player){
