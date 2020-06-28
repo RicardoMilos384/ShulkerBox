@@ -52,7 +52,9 @@ protected $holder;
 		$pk->eventData = $isOpen ? 1 : 0;
 		$this->getHolder()->getLevel()->addChunkPacket($this->getHolder()->getX() >> 4, $this->getHolder()->getZ() >> 4, $pk);
 	}
-
+         /**
+	 * @param Player $who
+	 */
 	public function onClose(Player $who): void{
 		if(count($this->getViewers()) === 1 && ($level = $this->getHolder()->getLevel()) instanceof Level){
 			$this->broadcastBlockEventPacket($this->getHolder(), false);
