@@ -43,9 +43,6 @@ protected $holder;
 		return $this->holder;
 	}
 
-        /**
-	 * @return Position
-	 */
 	protected function broadcastBlockEventPacket(Vector3 $vector, bool $isOpen){
 		$pk = new BlockEventPacket();
 		$pk->x = (int)$vector->x;
