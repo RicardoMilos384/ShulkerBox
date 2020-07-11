@@ -33,6 +33,13 @@ class ShulkerBox extends Transparent {
 	}
 
          /**
+         * @return int
+         */
+        public function getMaxStackSize() : int{
+		return 1;
+	}
+
+         /**
 	 * @return int
 	 */
 	public function getToolType(): int{
