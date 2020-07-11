@@ -13,7 +13,7 @@ use pocketmine\tile\Spawnable;
 
 class ShulkerBox extends Spawnable implements InventoryHolder, Container, Nameable {
 	use NameableTrait, ContainerTrait;
-  /** @var ShulkerBoxInventory */
+  /** @var ShulkerInventory */
   protected $inventory;
 
 	public function getDefaultName(): string{
