@@ -52,7 +52,7 @@ class ShulkerBox extends Transparent {
 	 * @return bool
 	 */
 	public function place(Item $item, Block $blockReplace, Block $blockClicked, int $face, Vector3 $clickVector, Player $player = null): bool{
-		/** @var ShulkerTile $tile */
+		/** @var ShulkerTile $shulker */
                 $this->getLevel()->setBlock($blockReplace, $this, true, true);
 		$shulker = ShulkerTile::createNBT($this, $face, $item, $player);
 		$items = $item->getNamedTag()->getTag(Container::TAG_ITEMS);
