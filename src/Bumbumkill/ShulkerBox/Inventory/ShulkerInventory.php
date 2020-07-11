@@ -13,6 +13,7 @@ use pocketmine\Player;
 
 class ShulkerInventory extends ContainerInventory {
 
+    /** @var ShulkerBox */
 protected $holder;
 
 	public function __construct(ShulkerBox $tile){
