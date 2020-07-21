@@ -12,6 +12,8 @@ use pocketmine\item\Item;
 use pocketmine\utils\Config;
 use Bumbumkill\ShulkerBox\block\ShulkerBox;
 
+use JackMD\UpdateNotifier\UpdateNotifier;
+
 class Main extends PluginBase implements Listener {
 	
 	public static $shulkerEnable = true;
@@ -28,6 +30,7 @@ public function onEnable(){
 	if(!file_exists($this->getDataFolder())){
 			@mkdir($this->getDataFolder());
 		}
+                UpdateNotifier::checkUpdate($this->getDescription()->getName(), $this->getDescription()->getVersion());
 		$this->saveDefaultConfig();
 		self::$config = new Config($this->getDataFolder() . "config.yml", Config::YAML);
 		self::$shulkerEnable = self::$config->getNested("Enable", self::$shulkerEnable);
