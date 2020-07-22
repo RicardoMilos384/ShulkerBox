@@ -11,5 +11,7 @@
 
 <h2>Feature</h2>
 <p>• Functional Shulker Box</p>
+<p>• Fixed Shulker Upside bug</p>
+
 
 
